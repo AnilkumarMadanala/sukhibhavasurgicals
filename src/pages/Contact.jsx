@@ -17,7 +17,7 @@ export default function Contact() {
 
           <p>
             <strong>Address:</strong><br />
-            SUKHIBHAVA SURGICAL, Aditya Complex, 18-1, KGH Down Rd, Opposite KGH OP Gate, Maharani Peta, Visakhapatnam, Andhra Pradesh 530002
+            SUKHIBHAVA SURGICALS, Aditya Complex, 18-1, KGH Down Rd, Opposite KGH OP Gate, Maharani Peta, Visakhapatnam, Andhra Pradesh 530002
           </p>
              <strong>MobileNo:</strong><br />
           <p className="phone">9676760263</p>

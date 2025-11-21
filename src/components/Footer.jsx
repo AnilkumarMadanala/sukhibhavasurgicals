@@ -30,7 +30,7 @@ export default function Footer() {
         {/* CONTACT */}
         <div className="footer-col">
           <h4>Contact</h4>
-          <p>📍 Vizianagaram, Andhra Pradesh</p>
+          <p>📍 SUKHIBHAVA SURGICALS, Aditya Complex, 18-1, KGH Down Rd, Opposite KGH OP Gate, Maharani Peta, Visakhapatnam, Andhra Pradesh 530002</p>
           <p>📞 +91 98765 43210</p>
           <p>✉ support@medsupply.in</p>
         </div>
