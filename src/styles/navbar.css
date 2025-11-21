@@ -1,0 +1,142 @@
+/* NAVBAR MAIN */
+.navbar {
+  background: #0b6477;
+  padding: 18px 20px;   /* Increased height */
+  color: #fff;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: 1250px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* ROW 1 — TITLE + CALL NOW */
+.nav-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo a {
+  color: #fff;
+  font-size: 21px;  /* Bigger title */
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.callnow-btn {
+  display: flex;
+  align-items: center;
+  background: #ff4d4d;
+  padding: 7px 12px;
+  border-radius: 6px;
+  color: white;
+  text-decoration: none;
+  gap: 6px;
+}
+
+.call-icon {
+  font-size: 16px;
+}
+
+/* ROW 2 — SHOP BY */
+.shop-by {
+  background: #065766;
+  padding: 5px 10px;
+  border-radius: 6px;
+  width: 25%;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 500;
+  display: none;
+}
+
+/* ROW 3 — ICON MENU (MOBILE) */
+.nav-mobile-icons {
+  display: none;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.icon-btn {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.icon-btn svg {
+  font-size: 22px;
+}
+
+/* ROW 4 — SEARCH BAR */
+.nav-search {
+  display: none;
+  align-items: center;
+  background: #ffffff;
+  padding: 6px 10px;
+  border-radius: 6px;
+}
+
+.nav-search input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 8px;
+}
+
+.nav-search button {
+  border: none;
+  background: none;
+  font-size: 20px;
+  color: #0b6477;
+}
+
+/* DESKTOP MENU */
+.nav-desktop-menu {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+  margin-top: 10px;
+}
+
+.nav-desktop-menu li a {
+  color: white;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.nav-desktop-menu li a:hover {
+  color: #d1faff;
+}
+
+/* ---------------------- MOBILE RESPONSIVE ---------------------- */
+
+@media (max-width: 768px) {
+  .nav-desktop-menu {
+    display: none; /* Hide desktop menu */
+  }
+
+  .shop-by {
+    display: block;
+  }
+
+  .nav-mobile-icons {
+    display: flex;
+  }
+
+  .nav-search {
+    display: flex;
+  }
+}

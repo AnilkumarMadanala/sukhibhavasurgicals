@@ -1,0 +1,110 @@
+/* MAIN CONTAINER */
+.contact-container {
+  width: 100%;
+  padding: 50px 20px;
+}
+
+/* TITLE */
+.contact-title {
+  text-align: center;
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+/* SUBTITLE */
+.contact-subtitle {
+  text-align: center;
+  font-size: 18px;
+  color: #0f879f;
+  margin-bottom: 35px;
+}
+
+/* WRAPPER */
+.contact-box {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: auto;
+  gap: 30px;
+}
+
+/* LEFT SIDE BOX */
+.contact-info {
+  width: 50%;
+  background: #ffffff15;
+  padding: 25px;
+  border-radius: 14px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Contact Info Heading */
+.contact-info h2 {
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+/* Labels (Address, Phone, Email) */
+.contact-info strong {
+  color: #1b1c1c; /* Teal-blue */
+  font-size: 16px;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+/* Normal text */
+.contact-info p {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #d3d9d4; /* Light grey text */
+}
+
+/* Phone number highlight */
+.contact-info .phone {
+  color: #e7e1e1; /* Red for phone number */
+  font-weight: bold;
+  font-size: 17px;
+}
+
+/* Email link */
+.contact-info a {
+  color: #e3e8ed;
+  text-decoration: underline;
+}
+
+.contact-info a:hover {
+  color: #ffcc00;
+}
+
+/* MAP BOX */
+.map-container {
+  width: 50%;
+  height: 350px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .contact-box {
+    flex-direction: column;
+  }
+
+  .contact-info,
+  .map-container {
+    width: 100%;
+  }
+
+  .map-container {
+    height: 300px;
+  }
+
+  .contact-title {
+    font-size: 30px;
+  }
+}
