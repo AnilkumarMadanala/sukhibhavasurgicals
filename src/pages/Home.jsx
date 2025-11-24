@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "../styles/home.css";
+import FloatingButtons from "../components/FloatingButtons";
 
 import hero1 from "../assets/hero6.jpg";
 import hero2 from "../assets/hero2.jpg";
@@ -7,7 +8,7 @@ import hero3 from "../assets/hero3.jpg";
 
 // IMPORT ALL PAGES TO SHOW THEM INSIDE HOME
 import About from "./About";
-import Products from "./Products";
+import Products from "./products";
 import Categories from "./Categories";
 import Contact from "./Contact";
 
@@ -112,6 +113,7 @@ export default function Home() {
       <section id="contact-section">
         <Contact />
       </section>
+   <FloatingButtons />
 
     </div>
   );
