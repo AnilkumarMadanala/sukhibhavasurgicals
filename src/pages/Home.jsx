@@ -8,7 +8,7 @@ import hero3 from "../assets/hero3.jpg";
 
 // IMPORT ALL PAGES TO SHOW THEM INSIDE HOME
 import About from "./About";
-import Products from "./products";
+import Products from "./Products";
 import Categories from "./Categories";
 import Contact from "./Contact";
 

@@ -1,11 +1,11 @@
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
-import Products from "./pages/products";
+import Products from "./pages/Products";
 import Categories from "./pages/Categories";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
-import Cart from "./pages/cart"; 
+import Cart from "./pages/Cart"; 
 import { Routes, Route } from "react-router-dom";
 
 import { CartProvider } from "./context/CartContext";  // ✅
