@@ -5,31 +5,36 @@ import Categories from "./pages/Categories";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Footer from "./components/Footer";
-import Cart from "./pages/Cart"; 
-import { Routes, Route } from "react-router-dom";
+import Cart from "./pages/Cart";
+import FloatingButtons from "./components/FloatingButtons";
 
-import { CartProvider } from "./context/CartContext";  // ✅
+import { Routes, Route } from "react-router-dom";
+import { CartProvider } from "./context/CartContext";
 
 function App() {
   return (
-    <>
-      <CartProvider>      {/* ✅ Wrap entire app */}
+    <CartProvider>
 
-        <Navbar />
+      {/* Navbar always visible */}
+      <Navbar />
 
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/categories" element={<Categories />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-           <Route path="/cart" element={<Cart />} />
-        </Routes>
+      {/* Floating buttons always visible */}
+      <FloatingButtons />
 
-        <Footer />
+      {/* Routes */}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
 
-      </CartProvider>
-    </>
+      {/* Footer always visible */}
+      <Footer />
+
+    </CartProvider>
   );
 }
 

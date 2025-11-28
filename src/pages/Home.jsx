@@ -1,18 +1,21 @@
 import { useState, useEffect } from "react";
 import "../styles/home.css";
 import FloatingButtons from "../components/FloatingButtons";
+import { useNavigate } from "react-router-dom";
 
 import hero1 from "../assets/hero6.jpg";
 import hero2 from "../assets/hero2.jpg";
 import hero3 from "../assets/hero3.jpg";
 
-// IMPORT ALL PAGES TO SHOW THEM INSIDE HOME
+// IMPORT PAGES
 import About from "./About";
 import Products from "./Products";
 import Categories from "./Categories";
 import Contact from "./Contact";
 
 export default function Home() {
+  const navigate = useNavigate();
+
   const images = [hero1, hero2, hero3];
 
   const slideText = [
@@ -20,25 +23,26 @@ export default function Home() {
       title: "Quality Medical Equipment",
       desc: "Your trusted partner for medical supplies.",
       btn: "Shop Now",
-      link: "/products",
+      action: () => navigate("/products"), // ⭐ Go to Products
     },
     {
       title: "Trusted By Hospitals & Clinics",
       desc: "Supplying reliable products for years.",
       btn: "Explore Categories",
-      link: "/categories",
+      action: () => navigate("/categories"), // ⭐ Go to Categories
     },
     {
       title: "Surgical Products You Can Rely On",
       desc: "High-quality and affordable instruments.",
       btn: "Send Enquiry",
-      link: "/contact",
+      action: () =>
+        window.open("https://wa.me/919676760263", "_blank"), // ⭐ WhatsApp
     },
   ];
 
   const [current, setCurrent] = useState(0);
 
-  // Auto slide effect
+  // Auto-slide every 4s
   useEffect(() => {
     const timer = setInterval(
       () => setCurrent((prev) => (prev + 1) % images.length),
@@ -72,9 +76,13 @@ export default function Home() {
                 <h1>{slideText[index].title}</h1>
                 <p>{slideText[index].desc}</p>
 
-                <a href={slideText[index].link} className="hero-btn">
+                {/* ⭐ Fixed Button Here */}
+                <button
+                  className="hero-btn"
+                  onClick={slideText[index].action}   // ⭐ CALL ACTION DIRECTLY
+                >
                   {slideText[index].btn}
-                </a>
+                </button>
               </div>
             )}
           </div>
@@ -94,27 +102,25 @@ export default function Home() {
         </div>
       </div>
 
-      {/* ----------------------- ABOUT SECTION ----------------------- */}
+      {/* ----------------------- SECTIONS ----------------------- */}
       <section id="about-section">
         <About />
       </section>
 
-      {/* ----------------------- CATEGORIES SECTION ----------------------- */}
       <section id="categories-section">
         <Categories />
       </section>
 
-      {/* ----------------------- PRODUCTS SECTION ----------------------- */}
       <section id="products-section">
         <Products />
       </section>
 
-      {/* ----------------------- CONTACT SECTION ----------------------- */}
       <section id="contact-section">
         <Contact />
       </section>
-   <FloatingButtons />
 
+      {/* Floating WhatsApp + Cart */}
+      <FloatingButtons />
     </div>
   );
 }
