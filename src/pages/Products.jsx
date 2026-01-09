@@ -1,4 +1,5 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect, useMemo } from "react";
+import { useSearchParams } from "react-router-dom";
 import "../styles/products.css";
 import { CartContext } from "../context/CartContext";
 
@@ -11,6 +12,10 @@ import p6 from "../assets/products/p6.jpg";
 
 export default function Products() {
   const { addToCart } = useContext(CartContext);
+  const [searchParams] = useSearchParams();
+  const searchQuery = searchParams.get("search") || "";
+
+  const [selectedCat, setSelectedCat] = useState(null);
 
   const imageMap = { 1: p1, 2: p2, 3: p3, 4: p4, 5: p5, 6: p6 };
 
@@ -52,11 +57,36 @@ export default function Products() {
     ],
   };
 
-  const [selectedCat, setSelectedCat] = useState(null);
+  /* 🔹 FLATTEN ALL PRODUCTS */
+  const flatProducts = useMemo(() => {
+    return Object.values(allProducts).flat();
+  }, []);
+
+  /* 🔹 SORT SEARCHED PRODUCTS TO TOP */
+  const sortedProducts = useMemo(() => {
+    if (!searchQuery) return flatProducts;
+
+    return [...flatProducts].sort((a, b) => {
+      const aMatch = a.name.toLowerCase().includes(searchQuery.toLowerCase());
+      const bMatch = b.name.toLowerCase().includes(searchQuery.toLowerCase());
+
+      if (aMatch && !bMatch) return -1;
+      if (!aMatch && bMatch) return 1;
+      return 0;
+    });
+  }, [searchQuery, flatProducts]);
+
+  /* 🔹 AUTO SHOW SEARCH RESULTS */
+  useEffect(() => {
+    if (searchQuery) {
+      setSelectedCat("search");
+    }
+  }, [searchQuery]);
 
   return (
     <div className="products-container">
 
+      {/* 🔹 CATEGORY VIEW */}
       {!selectedCat && (
         <>
           <h1 className="products-title">Our Medical Products</h1>
@@ -80,7 +110,43 @@ export default function Products() {
         </>
       )}
 
-      {selectedCat && (
+      {/* 🔹 SEARCH RESULTS */}
+      {selectedCat === "search" && (
+        <>
+          <h1 className="products-title">
+            Search Results for "{searchQuery}"
+          </h1>
+
+          <button className="back-btn" onClick={() => setSelectedCat(null)}>
+            ← Back
+          </button>
+
+          <div className="product-list-grid">
+            {sortedProducts.map((prod) => (
+              <div key={prod.id} className="product-full-card">
+                <img src={prod.img} className="full-img" />
+
+                <h3>{prod.name}</h3>
+
+                <p className="price-row">
+                  ₹{prod.offer}{" "}
+                  <span className="old-price">₹{prod.price}</span>
+                </p>
+
+                <button
+                  className="add-cart-btn"
+                  onClick={() => addToCart(prod)}
+                >
+                  Add to Cart
+                </button>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+
+      {/* 🔹 CATEGORY PRODUCTS */}
+      {selectedCat && selectedCat !== "search" && (
         <>
           <h1 className="products-title">Available Products</h1>
 
@@ -96,7 +162,8 @@ export default function Products() {
                 <h3>{prod.name}</h3>
 
                 <p className="price-row">
-                  ₹{prod.offer} <span className="old-price">₹{prod.price}</span>
+                  ₹{prod.offer}{" "}
+                  <span className="old-price">₹{prod.price}</span>
                 </p>
 
                 <button
@@ -110,6 +177,7 @@ export default function Products() {
           </div>
         </>
       )}
+
     </div>
   );
 }

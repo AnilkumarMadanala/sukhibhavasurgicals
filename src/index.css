@@ -12,7 +12,7 @@
   font-weight: 400;
 
   /* Removed background-color from :root to avoid navbar issues */
-  color: #d3d9d4;
+  color: #0b6477;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -38,6 +38,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+
 
 /* MAIN SECTION (content between navbar & footer) */
 main {
